@@ -1,13 +1,11 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { ethers } from "ethers";
 
 @Injectable({
   providedIn: "root",
 })
-export class EthersService implements OnInit {
+export class EthersService {
   constructor() {}
-
-  ngOnInit(): void {}
 
   // A Web3Provider wraps a standard Web3 provider, which is
   // what MetaMask injects as window.ethereum into each page
