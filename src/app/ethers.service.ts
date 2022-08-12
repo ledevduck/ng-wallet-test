@@ -7,17 +7,7 @@ import { ethers } from "ethers";
 export class EthersService implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {
-    // Force page refreshes on network changes
-    this.provider.on("network", (newNetwork, oldNetwork) => {
-      // When a Provider makes its initial connection, it emits a "network"
-      // event with a null oldNetwork along with the newNetwork. So, if the
-      // oldNetwork exists, it represents a changing network
-      if (oldNetwork) {
-        window.location.reload();
-      }
-    });
-  }
+  ngOnInit(): void {}
 
   // A Web3Provider wraps a standard Web3 provider, which is
   // what MetaMask injects as window.ethereum into each page
@@ -32,5 +22,15 @@ export class EthersService implements OnInit {
     // send ether and pay to change state within the blockchain.
     // For this, you need the account signer...
     const signer = this.provider.getSigner();
+
+    // Force page refreshes on network changes
+    this.provider.on("network", (newNetwork, oldNetwork) => {
+      // When a Provider makes its initial connection, it emits a "network"
+      // event with a null oldNetwork along with the newNetwork. So, if the
+      // oldNetwork exists, it represents a changing network
+      if (oldNetwork) {
+        window.location.reload();
+      }
+    });
   }
 }
