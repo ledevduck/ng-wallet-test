@@ -22,15 +22,5 @@ export class EthersService implements OnInit {
     // send ether and pay to change state within the blockchain.
     // For this, you need the account signer...
     const signer = this.provider.getSigner();
-
-    // Force page refreshes on network changes
-    this.provider.on("network", (newNetwork, oldNetwork) => {
-      // When a Provider makes its initial connection, it emits a "network"
-      // event with a null oldNetwork along with the newNetwork. So, if the
-      // oldNetwork exists, it represents a changing network
-      if (oldNetwork) {
-        window.location.reload();
-      }
-    });
   }
 }
